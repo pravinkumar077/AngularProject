@@ -1,0 +1,35 @@
+<div class="col-md-6 user-container">
+  <h2 style="margin: auto"> Customer Details</h2>
+  <button class="btn btn-danger" style="width:100px" (click)="addUser()"> Add Customer</button>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Id</th>
+      <th>Name</th>
+      <th>Borrowed books count</th>
+      <th>Age</th>
+      <th>Edit customer</th>
+      <th>Delete customer</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let emp of service.list">
+      <td class="hidden">{{user.id}}</td>
+      <td>{{emp.CustomerId}}</td>
+      <td>{{emp.Name}}</td>
+      <td>{{emp.BookCount}}</td>
+      <td><button class="btn btn-success" (click)="deleteUser(user)"> Delete</button>
+        <button class="btn btn-success" (click)="editUser(user)" style="margin-left: 20px;"> Edit</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<table class="table table-hover">
+  <tr *ngFor="let emp of service.list">
+    <td (click)="populateForm(emp)">{{emp.CustomerId}}</td>
+    <td (click)="populateForm(emp)">{{emp.Name}}</td>
+    <td (click)="populateForm(emp)">{{emp.BookCount}}</td>
+    <td><button (click)="onDelete(emp.CustomerId)" class="btn btn-sm btn-outline-danger">X</button></td>
+  </tr>
+</table>
